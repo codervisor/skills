@@ -1,31 +1,33 @@
-# Codervisor Skills
+# Codervisor Skills (archived)
 
-Public agent skills for Codervisor tools. Install via [`npx skills`](https://github.com/anthropics/claude-code).
+> **This repository is archived.** The `leanspec` skill now ships from the LeanSpec
+> monorepo itself, alongside the code it documents.
 
-## Available Skills
-
-| Skill | Install | Description |
-|-------|---------|-------------|
-| `leanspec` | `npx skills add codervisor/skills@leanspec` | Spec-Driven Development methodology for LeanSpec projects |
-
-## Install a Skill
+## New install path
 
 ```bash
-# Install a specific skill
-npx skills add codervisor/skills@leanspec
-
-# Or install all skills from this repo
-npx skills add codervisor/skills
+npx skills add codervisor/lean-spec@leanspec
 ```
 
-## What is LeanSpec?
+(After the upcoming `codervisor/lean-spec` → `codervisor/leanspec` repo rename,
+GitHub's auto-redirect keeps the command above working, and
+`npx skills add codervisor/leanspec@leanspec` will also resolve.)
 
-[LeanSpec](https://github.com/codervisor/leanspec) is a spec-driven development tool for AI-assisted projects. The `leanspec` skill teaches AI agents the SDD workflow: how to discover, create, refine, implement, and verify specs using the `leanspec` CLI.
+The skill source lives at:
+- https://github.com/codervisor/lean-spec/tree/main/skills/leanspec
 
-## Contributing
+## Why the move?
 
-Skills live under `.agents/skills/<name>/`. Each skill has a `SKILL.md` with frontmatter and optional `references/` files.
+Two reasons:
+
+1. **Colocate skill with code.** The `leanspec` skill teaches AI agents how to use
+   the `leanspec` CLI. Shipping it from the same repo means it can't drift from the
+   command surface it documents.
+2. **One repo, one source.** The vercel-labs/skills CLI gates internal-only skills
+   via `metadata.internal: true`, so the LeanSpec monorepo can host both the
+   public skill and internal contributor skills without leaking the latter via
+   `npx skills add`.
 
 ## License
 
-MIT
+MIT.
